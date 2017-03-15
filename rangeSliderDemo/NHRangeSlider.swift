@@ -332,28 +332,25 @@ public class NHRangeSlider: UIControl {
 	/// begin tracking
 	public override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
 		super.beginTrackingWithTouch(touch, withEvent: event)
-
-		print("beginTrackingWithTouch")
-
-		// set highlighted positions for lower and upper thumbs
-		if lowerThumbLayer.frame.contains(previouslocation) {
-			print("1111")
-			lowerThumbLayer.highlighted = true
-		}
-
-		if upperThumbLayer.frame.contains(previouslocation) {
-			print("2222")
-			upperThumbLayer.highlighted = true
-		}
-
-		return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
+        
+        print("beginTrackingWithTouch")
+        
+        let location = touch.locationInView(self)
+        // set highlighted positions for lower and upper thumbs
+        if lowerThumbLayer.frame.contains(location) {
+            lowerThumbLayer.highlighted = true
+        }
+        
+        if upperThumbLayer.frame.contains(location) {
+            upperThumbLayer.highlighted = true
+        }
+        
+        return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
 	}
 
 	/// update positions for lower and upper thumbs
 	public override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
 		super.continueTrackingWithTouch(touch, withEvent: event)
-
-		print("continueTrackingWithTouch")
 
 		let location = touch.locationInView(self)
 
@@ -401,14 +398,11 @@ public class NHRangeSlider: UIControl {
 	public override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
 		super.endTrackingWithTouch(touch, withEvent: event)
 
-		print("endTrackingWithTouch")
-
 		lowerThumbLayer.highlighted = false
 		upperThumbLayer.highlighted = false
 
 		// let slider snap after user stop dragging
 		if let stepValue = stepValue {
-			print("let slider snap after user stop dragging")
 			lowerValue = round(lowerValue / stepValue) * stepValue
 			upperValue = round(upperValue / stepValue) * stepValue
 			sendActionsForControlEvents(.ValueChanged)
