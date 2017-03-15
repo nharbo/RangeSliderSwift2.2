@@ -11,78 +11,78 @@ import UIKit
 /// enum for label positions
 public enum NHSliderLabelStyle : Int {
     /// lower and upper labels stick to the left and right of slider
-    case STICKY
+    case sticky
     
     /// lower and upper labels follow position of lower and upper thumbs
-    case FOLLOW
+    case follow
 }
 
 /// delegate for changed value
 public protocol NHRangeSliderViewDelegate: class {
     /// slider value changed
-    func sliderValueChanged(slider: NHRangeSlider?)
+    func sliderValueChanged(_ slider: NHRangeSlider?)
 }
 
 /// optional implementation
 public extension NHRangeSliderViewDelegate{
-    func sliderValueChanged(slider: NHRangeSlider?){}
+    func sliderValueChanged(_ slider: NHRangeSlider?){}
 }
 
 /// Range slider with labels for upper and lower thumbs, title label and configurable step value (optional)
-public class NHRangeSliderView: UIView {
+open class NHRangeSliderView: UIView {
 
     //MARK: properties
     
-    public var delegate: NHRangeSliderViewDelegate? = nil
+    open var delegate: NHRangeSliderViewDelegate? = nil
     
     /// Range slider
-    public var rangeSlider : NHRangeSlider? = nil
+    open var rangeSlider : NHRangeSlider? = nil
     
     /// Display title
-    public var titleLabel : UILabel? = nil
+    open var titleLabel : UILabel? = nil
     
     // lower value label for displaying selected lower value
-    public var lowerLabel : UILabel? = nil
+    open var lowerLabel : UILabel? = nil
     
     /// upper value label for displaying selected upper value
-    public var upperLabel : UILabel? = nil
+    open var upperLabel : UILabel? = nil
     
     /// display format for lower value. Default to %.0f to display value as Int
-    public var lowerDisplayStringFormat: String = "%.0f" {
+    open var lowerDisplayStringFormat: String = "%.0f" {
         didSet {
             updateLabelDisplay()
         }
     }
     
     /// display format for upper value. Default to %.0f to display value as Int
-    public var upperDisplayStringFormat: String = "%.0f" {
+    open var upperDisplayStringFormat: String = "%.0f" {
         didSet {
             updateLabelDisplay()
         }
     }
     
     /// vertical spacing
-    public var spacing: CGFloat = 4.0
+    open var spacing: CGFloat = 4.0
     
     /// position of thumb labels. Set to STICKY to stick to left and right positions. Set to FOLLOW to follow left and right thumbs
-    public var thumbLabelStyle: NHSliderLabelStyle = .STICKY
+    open var thumbLabelStyle: NHSliderLabelStyle = .sticky
     
     /// minimum value
-    @IBInspectable public var minimumValue: Double = 0.0 {
+    @IBInspectable open var minimumValue: Double = 0.0 {
         didSet {
             self.rangeSlider?.minimumValue = minimumValue
         }
     }
     
     /// max value
-    @IBInspectable public var maximumValue: Double = 100.0 {
+    @IBInspectable open var maximumValue: Double = 100.0 {
         didSet {
             self.rangeSlider?.maximumValue = maximumValue
         }
     }
     
     /// value for lower thumb
-    @IBInspectable public var lowerValue: Double = 0.0 {
+    @IBInspectable open var lowerValue: Double = 0.0 {
         didSet {
             self.rangeSlider?.lowerValue = lowerValue
             self.updateLabelDisplay()
@@ -90,7 +90,7 @@ public class NHRangeSliderView: UIView {
     }
     
     /// value for upper thumb
-    @IBInspectable public var upperValue: Double = 100.0 {
+    @IBInspectable open var upperValue: Double = 100.0 {
         didSet {
             self.rangeSlider?.upperValue = upperValue
             self.updateLabelDisplay()
@@ -98,21 +98,21 @@ public class NHRangeSliderView: UIView {
     }
     
     /// stepValue. If set, will snap to discrete step points along the slider . Default to nil
-    @IBInspectable public var stepValue: Double? = nil {
+    @IBInspectable open var stepValue: Double? = nil {
         didSet {
             self.rangeSlider?.stepValue = stepValue
         }
     }
     
     /// minimum distance between the upper and lower thumbs.
-    public var gapBetweenThumbs: Double = 2.0 {
+    open var gapBetweenThumbs: Double = 2.0 {
         didSet {
             self.rangeSlider?.gapBetweenThumbs = gapBetweenThumbs
         }
     }
     
     /// tint color for track between 2 thumbs
-    @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
+    @IBInspectable open var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
         didSet {
             self.rangeSlider?.trackTintColor = trackTintColor
         }
@@ -120,7 +120,7 @@ public class NHRangeSliderView: UIView {
     
     
     /// track highlight tint color
-    @IBInspectable public var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
+    @IBInspectable open var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
         didSet {
             self.rangeSlider?.trackHighlightTintColor = trackHighlightTintColor
         }
@@ -128,14 +128,14 @@ public class NHRangeSliderView: UIView {
     
     
     /// thumb tint color
-    @IBInspectable public var thumbTintColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable open var thumbTintColor: UIColor = UIColor.white {
         didSet {
             self.rangeSlider?.thumbTintColor = thumbTintColor
         }
     }
     
     /// thumb border color
-    @IBInspectable public var thumbBorderColor: UIColor = UIColor.grayColor() {
+    @IBInspectable open var thumbBorderColor: UIColor = UIColor.gray {
         didSet {
             self.rangeSlider?.thumbBorderColor = thumbBorderColor
         }
@@ -143,7 +143,7 @@ public class NHRangeSliderView: UIView {
     
     
     /// thumb border width
-    @IBInspectable public var thumbBorderWidth: CGFloat = 0.5 {
+    @IBInspectable open var thumbBorderWidth: CGFloat = 0.5 {
         didSet {
             self.rangeSlider?.thumbBorderWidth = thumbBorderWidth
 
@@ -151,14 +151,14 @@ public class NHRangeSliderView: UIView {
     }
     
     /// set 0.0 for square thumbs to 1.0 for circle thumbs
-    @IBInspectable public var curvaceousness: CGFloat = 1.0 {
+    @IBInspectable open var curvaceousness: CGFloat = 1.0 {
         didSet {
             self.rangeSlider?.curvaceousness = curvaceousness
         }
     }
     
     /// thumb width and height
-    @IBInspectable public var thumbSize: CGFloat = 32.0 {
+    @IBInspectable open var thumbSize: CGFloat = 32.0 {
         didSet {
             if let slider = self.rangeSlider {
                 var oldFrame = slider.frame
@@ -183,27 +183,27 @@ public class NHRangeSliderView: UIView {
     }
     
     /// setup
-    public func setup() {
-        self.autoresizingMask = [.FlexibleWidth]
+    open func setup() {
+        self.autoresizingMask = [.flexibleWidth]
         
         self.titleLabel = UILabel(frame: .zero)
         self.titleLabel?.numberOfLines = 1
-        self.titleLabel?.font = UIFont.boldSystemFontOfSize(16.0)
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.titleLabel?.text = ""
         self.addSubview(self.titleLabel!)
         
         self.lowerLabel = UILabel(frame: .zero)
         self.lowerLabel?.numberOfLines = 1
-        self.lowerLabel?.font = UIFont.systemFontOfSize(14.0)
+        self.lowerLabel?.font = UIFont.systemFont(ofSize: 14.0)
         self.lowerLabel?.text = ""
-        self.lowerLabel?.textAlignment = .Center
+        self.lowerLabel?.textAlignment = .center
         self.addSubview(self.lowerLabel!)
         
         self.upperLabel = UILabel(frame: .zero)
         self.upperLabel?.numberOfLines = 1
-        self.upperLabel?.font = UIFont.systemFontOfSize(14.0)
+        self.upperLabel?.font = UIFont.systemFont(ofSize: 14.0)
         self.upperLabel?.text = ""
-        self.upperLabel?.textAlignment = .Center
+        self.upperLabel?.textAlignment = .center
         self.addSubview(self.upperLabel!)
         
         self.rangeSlider = NHRangeSlider(frame: .zero)
@@ -211,7 +211,7 @@ public class NHRangeSliderView: UIView {
         
         self.updateLabelDisplay()
         
-        self.rangeSlider?.addTarget(self, action: #selector(self.rangeSliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        self.rangeSlider?.addTarget(self, action: #selector(self.rangeSliderValueChanged(_:)), for: .valueChanged)
     }
     
     //MARK: range slider delegage
@@ -220,7 +220,7 @@ public class NHRangeSliderView: UIView {
     /// Selected value for filterItem will also be updated
     ///
     /// - Parameter rangeSlider: the changed rangeSlider
-    public func rangeSliderValueChanged(rangeSlider: NHRangeSlider) {
+    open func rangeSliderValueChanged(_ rangeSlider: NHRangeSlider) {
        
         delegate?.sliderValueChanged(rangeSlider)
         
@@ -231,7 +231,7 @@ public class NHRangeSliderView: UIView {
     //MARK: -
     
     // update labels display
-    public func updateLabelDisplay() {
+    open func updateLabelDisplay() {
         
         self.lowerLabel?.text = String(format: self.lowerDisplayStringFormat, rangeSlider!.lowerValue )
         self.upperLabel?.text = String(format: self.upperDisplayStringFormat, rangeSlider!.upperValue )
@@ -239,8 +239,8 @@ public class NHRangeSliderView: UIView {
         if self.lowerLabel != nil {
             
             // for stepped value we animate the labels
-            if self.stepValue != nil && self.thumbLabelStyle == .FOLLOW {
-                UIView.animateWithDuration(0.1, animations: { 
+            if self.stepValue != nil && self.thumbLabelStyle == .follow {
+                UIView.animate(withDuration: 0.1, animations: { 
                     self.layoutSubviews()
                 })
             }
@@ -252,7 +252,7 @@ public class NHRangeSliderView: UIView {
     }
     
     /// layout subviews
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         if let titleLabel = self.titleLabel , let lowerLabel = self.lowerLabel ,
@@ -261,7 +261,7 @@ public class NHRangeSliderView: UIView {
             let commonWidth = self.bounds.width
             var titleLabelMaxY : CGFloat = 0
             
-            if !titleLabel.hidden && titleLabel.text != nil && titleLabel.text!.characters.count > 0 {
+            if !titleLabel.isHidden && titleLabel.text != nil && titleLabel.text!.characters.count > 0 {
                 titleLabel.frame = CGRect(x: 0,
                                           y: 0,
                                           width: commonWidth  ,
@@ -282,7 +282,7 @@ public class NHRangeSliderView: UIView {
             var upperLabelX : CGFloat = 0
             
             
-            if self.thumbLabelStyle == .FOLLOW {
+            if self.thumbLabelStyle == .follow {
                lowerLabelX = rangeSlider.lowerThumbLayer.frame.midX  - lowerWidth / 2
                upperLabelX = rangeSlider.upperThumbLayer.frame.midX  - upperWidth / 2
             }
@@ -307,7 +307,7 @@ public class NHRangeSliderView: UIView {
     }
     
     // return the best size that fit within the box
-    public override func sizeThatFits(size: CGSize) -> CGSize {
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
         
         if let titleLabel = self.titleLabel , let lowerLabel = self.lowerLabel {
             
@@ -315,7 +315,7 @@ public class NHRangeSliderView: UIView {
             
             var titleLabelMaxY : CGFloat = 0
             
-            if !titleLabel.hidden && titleLabel.text != nil && titleLabel.text!.characters.count > 0 {
+            if !titleLabel.isHidden && titleLabel.text != nil && titleLabel.text!.characters.count > 0 {
                 titleLabelMaxY = titleLabel.font.lineHeight + self.spacing
             }
             
@@ -336,8 +336,8 @@ public class NHRangeSliderView: UIView {
     /// - parameter width:  constrained width
     ///
     /// - returns: string size for constrained width
-    private func estimatelabelSize(font: UIFont,string: String, constrainedToWidth width: Double) -> CGSize{
-        return string.boundingRectWithSize(CGSize(width: width, height: DBL_MAX), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).size
+    fileprivate func estimatelabelSize(_ font: UIFont,string: String, constrainedToWidth width: Double) -> CGSize{
+        return string.boundingRect(with: CGSize(width: width, height: DBL_MAX), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).size
     }
     
 
