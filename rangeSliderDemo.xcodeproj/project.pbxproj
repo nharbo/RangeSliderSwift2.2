@@ -204,13 +204,16 @@
 				TargetAttributes = {
 					A865ADCC1E78BE9B00DD9A11 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 					A865ADE31E78BE9B00DD9A11 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = A865ADCC1E78BE9B00DD9A11;
 					};
 					A865ADEE1E78BE9B00DD9A11 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = A865ADCC1E78BE9B00DD9A11;
 					};
 				};
@@ -419,6 +422,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -430,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -441,6 +446,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rangeSliderDemo.app/rangeSliderDemo";
 			};
 			name = Debug;
@@ -453,6 +459,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rangeSliderDemo.app/rangeSliderDemo";
 			};
 			name = Release;
@@ -464,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = rangeSliderDemo;
 			};
 			name = Debug;
@@ -475,6 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nico.rangeSliderDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = rangeSliderDemo;
 			};
 			name = Release;
@@ -498,6 +507,7 @@
 				A865ADFA1E78BE9B00DD9A11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A865ADFB1E78BE9B00DD9A11 /* Build configuration list for PBXNativeTarget "rangeSliderDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +516,7 @@
 				A865ADFD1E78BE9B00DD9A11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A865ADFE1E78BE9B00DD9A11 /* Build configuration list for PBXNativeTarget "rangeSliderDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +525,7 @@
 				A865AE001E78BE9B00DD9A11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
