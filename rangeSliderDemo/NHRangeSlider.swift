@@ -336,6 +336,7 @@ public class NHRangeSlider: UIControl {
         print("beginTrackingWithTouch")
         
         let location = touch.locationInView(self)
+        previouslocation = location
         // set highlighted positions for lower and upper thumbs
         if lowerThumbLayer.frame.contains(location) {
             lowerThumbLayer.highlighted = true
@@ -346,6 +347,7 @@ public class NHRangeSlider: UIControl {
         }
         
         return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
+
 	}
 
 	/// update positions for lower and upper thumbs
